@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/customer")
+@RequestMapping("/ui/customer")
 class CustomerController {
     private final CustomerRepository repository;
 
@@ -47,7 +47,7 @@ class CustomerController {
     }
 
     @DeleteMapping(value = "/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @Transactional
     public void delete(@PathVariable("id") Long id) {
         repository.deleteById(id);

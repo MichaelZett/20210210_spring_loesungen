@@ -4,8 +4,7 @@ import de.zettsystems.netzfilm.customer.domain.Customer;
 import de.zettsystems.netzfilm.movie.domain.Copy;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -26,10 +25,12 @@ public class Rent {
     @OneToOne
     private Customer customer;
     @NotNull
+    @PositiveOrZero
     private BigDecimal amount;
     @NotNull
     private LocalDate start;
     @NotNull
+    @FutureOrPresent
     private LocalDate end;
 
     //needed for jpa
