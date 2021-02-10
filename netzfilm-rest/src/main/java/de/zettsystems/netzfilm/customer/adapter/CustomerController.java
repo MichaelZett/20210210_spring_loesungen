@@ -41,7 +41,7 @@ class CustomerController {
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Transactional
-    public void update(@PathVariable("id") Long id, @RequestBody CustomerData resource) {
+    public void update(@PathVariable("id") Long id, @Valid @RequestBody CustomerData resource) {
         final Customer customer = repository.findByIdAndVersion(id, resource.getVersion()).orElseThrow();
         customer.updateData(resource.getName(), resource.getLastName(), resource.getBirthdate());
     }
